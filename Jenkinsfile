@@ -5,6 +5,7 @@ pipeline {
       steps {
         echo 'Build'
         sh 'sh \'ping -c 2 localhost\''
+        sleep 10
       }
     }
     stage('Test') {
