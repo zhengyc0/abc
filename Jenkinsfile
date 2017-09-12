@@ -3,13 +3,31 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Build'
-        sleep 10
+        parallel(
+          "Build": {
+            echo 'Build'
+            sleep 10
+            
+          },
+          "Build_2": {
+            zip(zipFile: 'build001.zip', archive: true)
+            
+          }
+        )
       }
     }
     stage('Test') {
       steps {
-        echo 'Test'
+        parallel(
+          "Test": {
+            echo 'Test'
+            
+          },
+          "Test_2": {
+            sleep 40
+            
+          }
+        )
       }
     }
     stage('Deploy') {
