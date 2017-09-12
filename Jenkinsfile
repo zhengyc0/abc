@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
-        
+        sh 'sh \'ping -c 2 localhost\''
       }
     }
     stage('Test') {
